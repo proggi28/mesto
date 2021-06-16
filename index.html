@@ -10,17 +10,17 @@
 <body>
     <div class="page">
         <header class="header">
-            <div class="logo">
-                <img src="./images/svg/Vector-mesto.svg" alt="Логотип страницы">
-                <img src="./images/svg/Line.svg" alt="Нижняя линяя шапки">
-            </div>
+                <img class="header__logo" src="./images/svg/Vector-mesto.svg" alt="Логотип страницы">
+                <div class="header__line" src="./images/svg/Line.svg" alt="Нижняя линяя шапки"></div>
         </header>
         <main class="content">
             <section class="profile">
                 <img src="./images/avatar.jpg" alt="Аватарка" class="profile__avatar">
                 <div class="profile__info">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <p class="profile__text">Исследователь океана</p>
+                    <div class="profile__text-align">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <p class="profile__text">Исследователь океана</p>
+                    </div>
                     <button class="profile__edit-button"></button>
                 </div>
                 <button class="profile__add-button"></button>
@@ -30,48 +30,53 @@
                     <li class="element">
                         <img src="./images/karachaevsk.png" alt="Карачаевск" class="element__image">
                             <div class="description">
-                                <p class="element__text">Карачаевск</p>
+                                <h2 class="element__title">Карачаевск</h2>
                                 <button class="element__heart"></button>
                             </div>
                     </li>
                     <li class="element">
                         <img src="./images/elbrus.png" alt="Гора Эльбрус" class="element__image">
                             <div class="description">
-                                <p class="element__text">Гора Эльбрус</p>
+                                <h2 class="element__title">Гора Эльбрус</h2>
                                 <button class="element__heart"></button>
                             </div>
                     </li>
                     <li class="element">
                         <img src="./images/dombai.png" alt="Домбай" class="element__image">
                             <div class="description">
-                                <p class="element__text">Домбай</p>
+                                <h2 class="element__title">Домбай</h2>
                                 <button class="element__heart"></button>
                             </div>
                     </li>
                     <li class="element">
                         <img src="./images/elbrus.png" alt="Гора Эльбрус" class="element__image">
                             <div class="description">
-                                <p class="element__text">Гора Эльбрус</p>
+                                <h2 class="element__title">Гора Эльбрус</h2>
                                 <button class="element__heart"></button>
                             </div>
                     </li>
                     <li class="element">
                         <img src="./images/dombai.png" alt="Домбай" class="element__image">
                             <div class="description">
-                                <p class="element__text">Домбай</p>
+                                <h2 class="element__title">Домбай</h2>
                                 <button class="element__heart"></button>
                             </div>
                     </li>
                     <li class="element">
                         <img src="./images/karachaevsk.png" alt="Карачаево-Черкесия" class="element__image">
                             <div class="description">
-                                <p class="element__text">Карачаево-Черкесия</p>
+                                <h2 class="element__title">Карачаево-Черкесия</h2>
                                 <button class="element__heart"></button>
                             </div>
                     </li>
                 </ul>
             </section>
         </main>
+        <footer class="footer">
+            <p class="footer__text">
+                © 2020 Mesto Russia
+            </p>
+        </footer>
     </div>
 </body>
 </html>
