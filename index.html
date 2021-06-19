@@ -11,7 +11,7 @@
     <div class="page">
         <header class="header">
                 <img class="header__logo" src="./images/svg/Vector-mesto.svg" alt="Логотип страницы">
-                <div class="header__line" src="./images/svg/Line.svg" alt="Нижняя линяя шапки"></div>
+                <div class="header__line" src="./images/svg/Line.svg"></div>
         </header>
         <main class="content">
             <section class="profile">
@@ -80,13 +80,14 @@
         <!--  Попап  -->
         <section class="popup">
             <div class="popup__container">
+                <button type="submit" class="popup__close-button"></button>
                 <div class="popup__content">
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <input class="popup__form popup__formname" type="text" name="firstname" value="Жак Ив-Кусто">
-                    <div class="popup__line"></div>
-                    <input class="popup__form popup__formjob" type="text" name="job" value="Исследователь океана">
-                    <div class="popup__line"></div>
-                    <button class="popup__save-button">Сохранить</button>
+                    <form class="popup__form">
+                        <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя">
+                        <input class="popup__input popup__input_type_job" type="text" name="description" placeholder="Занятие">
+                        <button type="submit" class="popup__save-button">Сохранить</button>
+                    </form>
                 </div>
             </div>
         </section>
