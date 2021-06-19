@@ -1,5 +1,4 @@
 .profile__edit-button {
-    border: none;
     margin: 0;
     padding: 0;
     cursor: pointer;
@@ -11,7 +10,7 @@
     width: 24px;
     height: 24px;
     position: absolute;
-    top: 16px; 
+    top: 16px;
     right: -18px;
     transition: opacity .5s;
 }
