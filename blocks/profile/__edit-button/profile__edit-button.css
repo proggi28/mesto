@@ -8,16 +8,23 @@
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid #fff;
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     position: absolute;
-    top: 15px; 
+    top: 16px; 
     right: -18px;
+    transition: opacity .5s;
+}
+
+.profile__edit-button:hover {
+    opacity: .6;
 }
 
 @media screen and (max-width: 767px) {
     .profile__edit-button {
         top: 34px;
         right: -28px;
+        width: 18px;
+        height: 18px;
     }
 }
