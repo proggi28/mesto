@@ -14,4 +14,4 @@
 ___Планы по доработке___
 1) Улучшение функционала страницы с помощью JavaScript
 
-Ссылка на страницу на GitHub Pages
+Ссылка на страницу на GitHub Pages: https://proggi28.github.io/mesto/
