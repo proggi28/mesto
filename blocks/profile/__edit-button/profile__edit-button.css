@@ -2,8 +2,7 @@
     margin: 0;
     padding: 0;
     cursor: pointer;
-    background-color: transparent;
-    background-image: url(../../../images/svg/pen.svg);
+    background: url(../../../images/svg/pen.svg);
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid #fff;
