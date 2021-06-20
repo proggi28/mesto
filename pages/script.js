@@ -20,7 +20,7 @@ const closePopup = function() {
 }
 
 const closePopupByClockOnOverlay = function(event) {
-    console.log(event.target, event.currentTatget)
+    console.log(event.target, event.currentTarget)
     if (event.target !== event.currentTarget) {
         return
     }
