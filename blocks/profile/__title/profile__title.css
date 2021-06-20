@@ -1,7 +1,8 @@
 .profile__title {
-    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     padding: 0;
-    margin-right: 18px;
     margin-bottom: 16px;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-style: normal;
@@ -12,14 +13,9 @@
 
 @media screen and (max-width: 767px) {
     .profile__title {
-        margin: 0;
-        padding: 0;
-        font-family: 'Inter', Arial, Helvetica, sans-serif;
-        font-style: normal;
-        font-weight: 500;
         font-size: 27px;
         line-height: 33px;
-        text-align: center;
         margin-top: 26px;
+        margin-bottom: 0;
     }
 }

@@ -1,7 +1,6 @@
 const popupOpenButtonElement = document.querySelector('.profile__edit-button')
 const popupElement = document.querySelector('.popup')
 const popupCloseButtonElement = popupElement.querySelector('.popup__close-button')
-const popupSaveButtonElement = popupElement.querySelector('.popup__save-button')
 const formElement = popupElement.querySelector('.popup__form')
 const editFormName = popupElement.querySelector('.popup__input_type_name')
 const editFormJob = popupElement.querySelector('.popup__input_type_job')
@@ -9,10 +8,11 @@ const profile = document.querySelector('.profile')
 const profileName = profile.querySelector('.profile__title')
 const profileJob = profile.querySelector('.profile__text')
 
-console.log(popupOpenButtonElement, popupElement, popupCloseButtonElement, editFormName, editFormJob, profile, profileName, profileJob)
 
 const openPopup = function() {
     popupElement.classList.add('popup_is-opened')
+    editFormName.value = profileName.textContent
+    editFormJob.value = profileJob.textContent 
 }
 
 const closePopup = function() {
@@ -20,7 +20,6 @@ const closePopup = function() {
 }
 
 const closePopupByClockOnOverlay = function(event) {
-    console.log(event.target, event.currentTarget)
     if (event.target !== event.currentTarget) {
         return
     }

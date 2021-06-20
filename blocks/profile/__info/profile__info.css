@@ -1,6 +1,8 @@
 .profile__info {
-    max-width: 336px;
-    position: relative;
+    display: flex;
     align-self: center;
+    max-width: 336px;
 }
+
+
 
