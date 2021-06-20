@@ -2,12 +2,5 @@
     max-width: 336px;
     position: relative;
     align-self: center;
-    display: flex;
 }
 
-@media screen and (max-width: 767px) {
-    .profile__info {
-        max-width: 282px;
-        justify-content: space-between;
-    }
-}
