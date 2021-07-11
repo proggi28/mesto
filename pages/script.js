@@ -21,6 +21,11 @@ const editFormPlace = popupTypeAddCardElement.querySelector('.popup__input_type_
 const profileTitle = itemTemplateElement.querySelector('.card__title');
 const profilePlace = itemTemplateElement.querySelector('.card__image');
 const popupAddSaveButtonElement = popupTypeAddCardElement.querySelector('.popup__save-button_add_card');
+//Попап увеличения изображения
+const popupOpenImgPlace = document.querySelector('.popup-image');
+const popupOpenImgPlaceImage = popupOpenImgPlace.querySelector('.popup-image__image');
+const popupOpenImgPlaceText = popupOpenImgPlace.querySelector('.popup-image__text');
+const popupOpenImgCloseButton = popupOpenImgPlace.querySelector('.popup__close-button_open_image')
 
 
 
@@ -70,6 +75,15 @@ popupTypeAddCardElement.addEventListener('click', (evt) => {
       return}
   popupTypeAddCardElement.classList.remove('popup_is-opened');
 })
+//Слушатели для попапа увеличения изображения
+popupOpenImgCloseButton.addEventListener('click', () => {
+  popupOpenImgPlace.classList.remove('popup_is-opened');
+})
+popupOpenImgPlace.addEventListener('click', (evt) => {
+  if (evt.target !== evt.currentTarget) {
+      return}
+  popupOpenImgPlace.classList.remove('popup_is-opened');
+})
 
 
 // Вывод карточек из массива
@@ -108,7 +122,23 @@ function renderCard(name, link) {
   selectCard.src = link;
   selectCard.alt = name;
 
+  newCards.querySelector('.card__heart').addEventListener('click', (evt) => {
+    evt.target.classList.toggle('card__heart_active');
+})
 
+  newCards.querySelector('.card__button-delete').addEventListener('click', (evt) => {
+    evt.target.closest('.card').remove();
+})
+
+
+  const takePreviewImage = () => {
+    popupOpenImgPlace.classList.toggle('popup_is-opened');
+    popupOpenImgPlaceImage.src = link;
+    popupOpenImgPlaceImage.alt = selectCard.name;
+    popupOpenImgPlaceText.textContent = name;
+}
+
+  newCards.querySelector('.card__image').addEventListener('click', () => takePreviewImage())
 
   return newCards;
 }
@@ -128,8 +158,24 @@ function createCard(editFormTitle, editFormPlace) {
   selectCard.src = editFormPlace.value;
   selectCard.alt = editFormTitle.value;
 
+  newCards.querySelector('.card__heart').addEventListener('click', (evt) => {
+    evt.target.classList.toggle('card__heart_active');
+})
 
-  
+  newCards.querySelector('.card__button-delete').addEventListener('click', (evt) => {
+    evt.target.closest('.card').remove();
+})
+
+
+  const takePreviewImage = () => {
+    popupOpenImgPlace.classList.toggle('popup_is-opened');
+    popupOpenImgPlaceImage.src = selectCard.src;
+    popupOpenImgPlaceImage.alt = selectCard.alt;
+    popupOpenImgPlaceText.textContent = selectCard.alt;
+}
+
+  newCards.querySelector('.card__image').addEventListener('click', () => takePreviewImage())
+
 
   listElement.prepend(newCards);
 
