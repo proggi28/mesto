@@ -9,6 +9,11 @@ const profileName = profile.querySelector('.profile__title')
 const profileJob = profile.querySelector('.profile__text')
 
 
+//Объявление переменных для новых попапов
+const itemTemplateElement = document.querySelector('.item-template').content;
+const listElement = document.querySelector('.cards__list-style');
+
+
 const openPopup = function() {
     popupElement.classList.add('popup_is-opened')
     editFormName.value = profileName.textContent
@@ -39,3 +44,51 @@ popupOpenButtonElement.addEventListener('click', openPopup)
 popupCloseButtonElement.addEventListener('click', closePopup)
 popupElement.addEventListener('click', closePopupByClockOnOverlay)
 formElement.addEventListener('submit', formSubmitHandler)
+
+
+// Вывод карточек из массива
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ]; 
+
+  //Вывод карточек из массива
+function renderCard(name, link) {
+  const newCards = itemTemplateElement.querySelector('.card').cloneNode(true);
+  newCards.querySelector('.card__title').textContent = name;
+  const selectCard = newCards.querySelector('.card__image');
+  selectCard.src = link;
+  selectCard.alt = name;
+
+
+
+  return newCards;
+}
+
+
+
+  initialCards.forEach(function (el) {
+      listElement.append(renderCard(el.name, el.link));
+});
