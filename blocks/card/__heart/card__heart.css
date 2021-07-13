@@ -18,8 +18,3 @@
     cursor: pointer;
 }
 
-.card__heart:active {
-    opacity: 1;
-    background-image: url(../../../images/svg/heart-black.svg);
-}
-
