@@ -30,7 +30,6 @@ const initialCards = [
 //const popupElement = document.querySelector('.popup')
 
 //Поиск попапов
-const popup = document.querySelector('.popup')
 const profilePopup = document.querySelector('.popup_type_profile')
 const popupTypeAddCardElement = document.querySelector('.popup_type_add-card')
 const popupOpenImgPlace = document.querySelector('.popup-image');
@@ -86,7 +85,8 @@ const closePopupByClockOnOverlay = function(event) {
     if (event.target !== event.currentTarget) {
         return
     }
-    closePopup(popup)
+    const openedPopup = document.querySelector('.popup_is-opened');
+    closePopup(openedPopup);
 }
 
 const submitProfileForm = function(evt) {
@@ -94,7 +94,7 @@ const submitProfileForm = function(evt) {
     profileName.textContent = editFormName.value
     profileJob.textContent = editFormJob.value
 
-    closePopup(popup)
+    closePopup(profilePopup)
 }
 //Слушатели попапа редактирования профиля
 popupOpenButtonElement.addEventListener('click', () => {
@@ -118,9 +118,7 @@ popupAddCloseButtonElement.addEventListener('click', () => {
   closePopup(popupTypeAddCardElement);
 })
 
-popupTypeAddCardElement.addEventListener('click', () => {
-  closePopupByClockOnOverlay(popupTypeAddCardElement)
-})
+popupTypeAddCardElement.addEventListener('click', closePopupByClockOnOverlay)
 
 formAddElement.addEventListener('submit', formAddSubmitHandler);
 
@@ -129,70 +127,7 @@ popupOpenImgCloseButton.addEventListener('click', () => {
   closePopup(popupOpenImgPlace)
 })
 
-  //Вывод карточек из массива
-/*function renderCard(name, link) {
-  const newCards = itemTemplateElement.querySelector('.card').cloneNode(true);
-  newCards.querySelector('.card__title').textContent = name;
-  const selectCard = newCards.querySelector('.card__image');
-  selectCard.src = link;
-  selectCard.alt = name;
-
-  newCards.querySelector('.card__heart').addEventListener('click', (evt) => {
-    evt.target.classList.toggle('card__heart_active');
-})
-
-  newCards.querySelector('.card__button-delete').addEventListener('click', (evt) => {
-    evt.target.closest('.card').remove();
-})
-
-
-  const takePreviewImage = () => {
-    popupOpenImgPlace.classList.toggle('popup_is-opened');
-    popupOpenImgPlaceImage.src = link;
-    popupOpenImgPlaceImage.alt = selectCard.name;
-    popupOpenImgPlaceText.textContent = name;
-}
-
-  newCards.querySelector('.card__image').addEventListener('click', () => takePreviewImage())
-
-  return newCards;
-}*/
-
-
-
-  
-
-
-//Создание новой карточки
-/*function createCard(editFormTitle, editFormPlace) {
-  const newCard = itemTemplateElement.querySelector('.card').cloneNode(true);
-  newCard.querySelector('.card__title').textContent = editFormTitle.value;
-  const selectCard = newCard.querySelector('.card__image');
-  selectCard.src = editFormPlace.value;
-  selectCard.alt = editFormTitle.value;
-
-  newCard.querySelector('.card__heart').addEventListener('click', (evt) => {
-    evt.target.classList.toggle('card__heart_active');
-})
-
-  newCard.querySelector('.card__button-delete').addEventListener('click', (evt) => {
-    evt.target.closest('.card').remove();
-})
-
-
-  const takePreviewImage = () => {
-    popupOpenImgPlace.classList.toggle('popup_is-opened');
-    popupOpenImgPlaceImage.src = selectCard.src;
-    popupOpenImgPlaceImage.alt = selectCard.alt;
-    popupOpenImgPlaceText.textContent = selectCard.alt;
-}
-
-  newCard.querySelector('.card__image').addEventListener('click', () => takePreviewImage())
-
-
-  listElement.prepend(newCard);
-}*/
-
+popupOpenImgPlace.addEventListener('click', closePopupByClockOnOverlay)
 
 function createCard(editFormTitle, editFormPlace) {
   const newCard = itemTemplateElement.querySelector('.card').cloneNode(true);
@@ -235,7 +170,4 @@ function formAddSubmitHandler(evt) {
   evt.preventDefault();
   listElement.prepend(createCard(editFormTitle.value, editFormPlace.value));
   closePopup(popupTypeAddCardElement)
-  formAddElement.reset();
-}
-
-popupAddSaveButtonElement.addEventListener('click', () => formAddSubmitHandler)
+  formAddElement.reset();}
