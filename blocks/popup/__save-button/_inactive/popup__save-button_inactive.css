@@ -1,0 +1,12 @@
+.popup__save-button_inactive {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #000000;
+    background: #ffffff;
+    border: 1px solid #000;    
+    opacity: .2;
+}

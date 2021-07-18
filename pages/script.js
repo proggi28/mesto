@@ -38,7 +38,9 @@ const popupOpenImgPlace = document.querySelector('.popup-image');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button')
 const popupCloseButtonElement = profilePopup.querySelector('.popup__close-button')
 //Форма попапа popupProfile
+const formPopup = document.querySelector('.popup__form')
 const formProfile = profilePopup.querySelector('.popup__form')
+const inputElement = document.querySelector('popup__input')
 //Поля попапа popupProfile
 const editFormName = profilePopup.querySelector('.popup__input_type_name')
 const editFormJob = profilePopup.querySelector('.popup__input_type_job')
@@ -85,9 +87,23 @@ const closePopupByClockOnOverlay = function(event) {
     if (event.target !== event.currentTarget) {
         return
     }
+
     const openedPopup = document.querySelector('.popup_is-opened');
     closePopup(openedPopup);
 }
+
+const handleEscUp = (evt) => {
+  evt.preventDefault();
+  if (evt.key === 'Escape') {
+    //const activePopup = document.querySelector('.popup_is-opened');
+    //closePopup(activePopup);
+    closePopup(profilePopup)
+    closePopup(popupTypeAddCardElement)
+    closePopup(popupOpenImgPlace);
+  }
+};
+
+document.addEventListener('keyup', handleEscUp)
 
 const submitProfileForm = function(evt) {
     evt.preventDefault()
@@ -126,8 +142,8 @@ formAddElement.addEventListener('submit', formAddSubmitHandler);
 popupOpenImgCloseButton.addEventListener('click', () => {
   closePopup(popupOpenImgPlace)
 })
-
 popupOpenImgPlace.addEventListener('click', closePopupByClockOnOverlay)
+
 
 function createCard(editFormTitle, editFormPlace) {
   const newCard = itemTemplateElement.querySelector('.card').cloneNode(true);
