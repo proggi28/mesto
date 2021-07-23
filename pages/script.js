@@ -96,10 +96,6 @@ formElement.addEventListener('submit', handleProfileFormSubmit);
 popupAddOpenButtonElement.addEventListener('click', () => {
   openPopup(popupTypeAddCardElement);
   formAddElement.reset();
-  //const formElement = document.querySelector('.popup__form_add_element')
-  //checkInputValidity(formElement, inputElement)
-  //checkInputValidity(formElement, editFormTitle)
-  //checkInputValidity(formElement, editFormPlace)
 })
 
 const formsArr = Array.from(document.querySelectorAll(enableValidation.formSelector));
