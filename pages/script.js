@@ -84,8 +84,8 @@ popupOpenButtonElement.addEventListener('click', () => {
   openPopup(profilePopup);
   editFormName.value = profileName.textContent;
   editFormJob.value = profileJob.textContent;
-  checkInputValidity(formElement, editFormName)
-  checkInputValidity(formElement, editFormJob)
+  checkInputValidity(formElement, editFormName);
+  checkInputValidity(formElement, editFormJob);
 })
 
 popupCloseButtonElement.addEventListener('click', () => closePopup(profilePopup));
@@ -140,7 +140,7 @@ function createCard(editFormTitle, editFormPlace) {
 
 
   const takePreviewImage = () => {
-    popupOpenImgPlace.classList.toggle('popup_is-opened');
+    openPopup(popupOpenImgPlace);
     popupOpenImgPlaceImage.src = selectCard.src;
     popupOpenImgPlaceImage.alt = selectCard.alt;
     popupOpenImgPlaceText.textContent = selectCard.alt;
