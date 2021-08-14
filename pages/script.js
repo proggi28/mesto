@@ -7,8 +7,8 @@ const popupTypeAddCardElement = document.querySelector('.popup_type_add-card');
 const popupOpenImgPlace = document.querySelector('.popup-image');
 
 //Кнопки попапа popupProfile
-const popupOpenButtonElement = document.querySelector('.profile__edit-button');
-const popupCloseButtonElement = profilePopup.querySelector('.popup__close-button');
+const buttonOpenPopupProfile = document.querySelector('.profile__edit-button');
+const buttonClosePopupProfile = profilePopup.querySelector('.popup__close-button');
 //Форма попапа
 const formElement = profilePopup.querySelector('.popup__form');
 const inputElement = document.querySelector('popup__input');
@@ -36,7 +36,7 @@ const popupAddSaveButtonElement = popupTypeAddCardElement.querySelector('.popup_
 const formAddElement = document.querySelector('.popup__form_add_element');
 //Поля попапа popupTypeAddCardElement
 const editFormTitle = popupTypeAddCardElement.querySelector('.popup__input_type_title');
-const editFormPlace = popupTypeAddCardElement.querySelector('.popup__input_type_place');
+const editFormLink = popupTypeAddCardElement.querySelector('.popup__input_type_place');
 
 
 //Попап увеличения изображения
@@ -112,13 +112,17 @@ const handleProfileFormSubmit = function (evt) {
   closePopup(profilePopup);
 }
 //Слушатели попапа редактирования профиля
-popupOpenButtonElement.addEventListener('click', () => {
-  openPopup(profilePopup);
+buttonOpenPopupProfile.addEventListener('click', () => {
   editFormName.value = profileName.textContent;
   editFormJob.value = profileJob.textContent;
+  openPopup(profilePopup);
+  editProfileValidate.deleteValidation();
 })
 
-popupCloseButtonElement.addEventListener('click', () => closePopup(profilePopup));
+//!!!Вопрос по поводу зауженных карточек: убрал свойство margin:0 auto, но от этого
+// ничего не изменилось и до этого вопросов не было по этому моменту. Немного не понимаю как исправить данный комментарий
+
+buttonClosePopupProfile.addEventListener('click', () => closePopup(profilePopup));
 profilePopup.addEventListener('click', closePopupByClockOnOverlay);
 formElement.addEventListener('submit', handleProfileFormSubmit);
 
@@ -126,7 +130,9 @@ formElement.addEventListener('submit', handleProfileFormSubmit);
 popupAddOpenButtonElement.addEventListener('click', () => {
   openPopup(popupTypeAddCardElement);
   formAddElement.reset();
+  addNewCardValidate.deleteValidation();
 })
+
 
 popupAddCloseButtonElement.addEventListener('click', () => {
   closePopup(popupTypeAddCardElement);
@@ -139,19 +145,17 @@ formAddElement.addEventListener('submit', handleCardFormSubmit);
 popupOpenImgCloseButton.addEventListener('click', () => {
   closePopup(popupOpenImgPlace);
 })
-popupOpenImgPlace.addEventListener('keydown', handleEscUp);
 popupOpenImgPlace.addEventListener('click', closePopupByClockOnOverlay);
 
 
 function handleCardFormSubmit(evt) {
-  const card = new Card (editFormTitle.value, editFormPlace.value, itemTemplateElement)
   evt.preventDefault();
+  const card = new Card (editFormTitle.value, editFormLink.value, itemTemplateElement, takePreviewImage)
   listElement.prepend(card.generateCard())
   closePopup(popupTypeAddCardElement);
-  formAddElement.reset();
-
-  const inputList = Array.from(formAddElement.querySelectorAll('.popup__input'));
-  const buttonElement = formAddElement.querySelector('.popup__save-button_add_card');
-  const inactiveButtonClass = 'popup__save-button_inactive';
-  toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+  formAddElement.reset();;
+  //const inputList = Array.from(formAddElement.querySelectorAll('.popup__input'));
+  //const buttonElement = formAddElement.querySelector('.popup__save-button_add_card');
+  //const inactiveButtonClass = 'popup__save-button_inactive';
+  //toggleButtonState(inputList, buttonElement, inactiveButtonClass);
 }

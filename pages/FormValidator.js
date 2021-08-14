@@ -60,14 +60,12 @@ export class FormValidator {
               this._toggleButtonState(inputElement);
             });
           });
-          this._toggleButtonState();
     }
 
     deleteValidation() {
-      this._toggleButtonState();
-
       this._inputList.forEach((inputElement) => {
-        this._hideInputError(inputElement)
+        this._hideInputError(inputElement);
+        this._toggleButtonState();
     })
     };
 

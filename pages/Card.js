@@ -27,13 +27,26 @@ export class Card {
     
     _setEventListeners() {
         this._cardLikeButton.addEventListener('click', (evt) => {
-            evt.target.classList.toggle('card__heart_active');
+            this._buttonLike(evt);
           })
-        this._cardDeleteButton.addEventListener('click', (evt) => {
-            evt.target.closest('.card').remove();
+        this._cardDeleteButton.addEventListener('click', () => {
+            this._buttonDelete();
           })
         this._selectCard.addEventListener('click', () => {
-           this._takePreviewImage(this._name, this._link);
+           this._buttonOpenImage();
         })
     }
+
+    _buttonDelete () {
+        this._element.remove(); 
+        this._element = null;
+      }
+    
+      _buttonLike (evt) {
+        evt.target.classList.toggle('card__like_active')
+      }
+    
+      _buttonOpenImage () {
+        this._takePreviewImage(this._name, this._link)
+      }
 }
