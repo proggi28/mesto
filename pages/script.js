@@ -116,8 +116,6 @@ popupOpenButtonElement.addEventListener('click', () => {
   openPopup(profilePopup);
   editFormName.value = profileName.textContent;
   editFormJob.value = profileJob.textContent;
-  //checkInputValidity(formElement, editFormName);
-  //checkInputValidity(formElement, editFormJob);
 })
 
 popupCloseButtonElement.addEventListener('click', () => closePopup(profilePopup));
