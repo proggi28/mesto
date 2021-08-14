@@ -1,3 +1,6 @@
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js'
+
 //Поиск попапов
 const profilePopup = document.querySelector('.popup_type_profile');
 const popupTypeAddCardElement = document.querySelector('.popup_type_add-card');
@@ -42,19 +45,48 @@ const popupOpenImgPlaceText = popupOpenImgPlace.querySelector('.popup-image__tex
 const popupOpenImgCloseButton = popupOpenImgPlace.querySelector('.popup__close-button_open_image');
 
 
+function takePreviewImage(name, link) {
+  popupOpenImgPlaceImage.src = link;
+  popupOpenImgPlaceImage.alt = name;
+  popupOpenImgPlaceText.textContent = name;
+  openPopup(popupOpenImgPlace);
+}
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorClass: 'popup__input-error',
+  inputInvalidClass: 'popup__error-visible',
+};
+
+const editProfileValidate = new FormValidator(validationConfig, formElement);
+const addNewCardValidate = new FormValidator(validationConfig, formAddElement);
+editProfileValidate.enableValidation();
+addNewCardValidate.enableValidation();
+
+initialCards.forEach(function (el) {
+  const card = new Card(el.name, el.link, itemTemplateElement, takePreviewImage);
+  
+  listElement.append(card.generateCard());
+});
+
 //Вызов основных функций
+
+//Открытие попапа
 const openPopup = function (popup) {
   popup.classList.add('popup_is-opened');
 
   document.addEventListener('keyup', handleEscUp);
 }
-
+//Закрытие попапа
 const closePopup = function (popup) {
   popup.classList.remove('popup_is-opened');
 
   document.removeEventListener('keyup', handleEscUp);
 }
-
+//Закрытие попапа по темной области
 const closePopupByClockOnOverlay = function (event) {
   if (event.target !== event.currentTarget) {
     return
@@ -63,7 +95,7 @@ const closePopupByClockOnOverlay = function (event) {
   const openedPopup = document.querySelector('.popup_is-opened');
   closePopup(openedPopup);
 }
-
+//Закрытие попапа кнопкой Esc
 const handleEscUp = (evt) => {
   evt.preventDefault();
   if (evt.key === 'Escape') {
@@ -71,7 +103,7 @@ const handleEscUp = (evt) => {
     closePopup(activePopup);
   }
 };
-
+//Кнопка отправки формы
 const handleProfileFormSubmit = function (evt) {
   evt.preventDefault();
   profileName.textContent = editFormName.value;
@@ -84,8 +116,8 @@ popupOpenButtonElement.addEventListener('click', () => {
   openPopup(profilePopup);
   editFormName.value = profileName.textContent;
   editFormJob.value = profileJob.textContent;
-  checkInputValidity(formElement, editFormName);
-  checkInputValidity(formElement, editFormJob);
+  //checkInputValidity(formElement, editFormName);
+  //checkInputValidity(formElement, editFormJob);
 })
 
 popupCloseButtonElement.addEventListener('click', () => closePopup(profilePopup));
@@ -98,18 +130,10 @@ popupAddOpenButtonElement.addEventListener('click', () => {
   formAddElement.reset();
 })
 
-const formsArr = Array.from(document.querySelectorAll(enableValidation.formSelector));
-formsArr.forEach(function (form) {
-  enableValidation(formSelector, inputElement, form);
-});
-
-
 popupAddCloseButtonElement.addEventListener('click', () => {
   closePopup(popupTypeAddCardElement);
 })
-
 popupTypeAddCardElement.addEventListener('click', closePopupByClockOnOverlay);
-
 formAddElement.addEventListener('submit', handleCardFormSubmit);
 
 
@@ -121,48 +145,10 @@ popupOpenImgPlace.addEventListener('keydown', handleEscUp);
 popupOpenImgPlace.addEventListener('click', closePopupByClockOnOverlay);
 
 
-
-//Функция добавления новой карточки и рендеринг карточек
-function createCard(editFormTitle, editFormPlace) {
-  const newCard = itemTemplateElement.querySelector('.card').cloneNode(true);
-  newCard.querySelector('.card__title').textContent = editFormTitle;
-  const selectCard = newCard.querySelector('.card__image');
-  selectCard.src = editFormPlace;
-  selectCard.alt = editFormTitle;
-
-  newCard.querySelector('.card__heart').addEventListener('click', (evt) => {
-    evt.target.classList.toggle('card__heart_active');
-  })
-
-  newCard.querySelector('.card__button-delete').addEventListener('click', (evt) => {
-    evt.target.closest('.card').remove();
-  })
-
-
-  const takePreviewImage = () => {
-    openPopup(popupOpenImgPlace);
-    popupOpenImgPlaceImage.src = selectCard.src;
-    popupOpenImgPlaceImage.alt = selectCard.alt;
-    popupOpenImgPlaceText.textContent = selectCard.alt;
-  }
-
-  newCard.querySelector('.card__image').addEventListener('click', () => takePreviewImage());
-
-
-  return newCard
-}
-
-const renderCard = (listElement, newCard) => {
-  listElement.prepend(newCard);
-}
-
-initialCards.forEach(function (el) {
-  renderCard(listElement, createCard(el.name, el.link));
-});
-
 function handleCardFormSubmit(evt) {
+  const card = new Card (editFormTitle.value, editFormPlace.value, itemTemplateElement)
   evt.preventDefault();
-  listElement.prepend(createCard(editFormTitle.value, editFormPlace.value));
+  listElement.prepend(card.generateCard())
   closePopup(popupTypeAddCardElement);
   formAddElement.reset();
 
