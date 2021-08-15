@@ -43,7 +43,7 @@ export class Card {
       }
     
       _buttonLike (evt) {
-        evt.target.classList.toggle('card__like_active')
+        evt.target.classList.toggle('card__heart_active')
       }
     
       _buttonOpenImage () {
