@@ -1,0 +1,38 @@
+{
+  "name": "yandex_praktikum_mesto",
+  "version": "0.0.1",
+  "description": "Сайт про ученых и исследователей, а также о метсах, которые они посещали.\r В данной работе используются технологии:\r 1) Flex-позиционирование\r 2) grid\r 3) Адаптивная и отзывчивая верстка\r 4) формы\r 5) JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proggi28/mesto.git"
+  },
+  "author": "Igor Karpenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/proggi28/mesto/issues"
+  },
+  "homepage": "https://github.com/proggi28/mesto#readme",
+  "dependencies": {
+    "core-js": "^3.18.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "autoprefixer": "^10.3.6",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.3.0",
+    "cssnano": "^5.0.8",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.3.0",
+    "postcss-loader": "^6.1.1",
+    "webpack": "^5.56.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.3.0"
+  }
+}

@@ -1,4 +1,4 @@
-export default class UserInfo {
+export class UserInfo {
     constructor({nameSelector, infoSelector}) {
         this._userName = document.querySelector(nameSelector);
         this._userInfo = document.querySelector(infoSelector);
