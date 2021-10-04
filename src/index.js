@@ -8,18 +8,21 @@ import { UserInfo } from '../pages/components/UserInfo.js'
 import { PopupWithForm } from '../pages/components/PopupWithForm.js'
 import { validationConfig } from '../pages/utils/config.js';
 import { initialCards } from '../pages/utils/initial-cards.js';
-import { profilePopup, popupTypeAddCardElement, popupOpenImgPlace, buttonOpenPopupProfile, buttonClosePopupProfile,
-formElement, inputElement, userProfile, userInfo, profile, profileName, profileJob,itemTemplateElement,
-profileTitle, profilePlace, listElement, popupAddOpenButtonElement, popupAddCloseButtonElement, popupAddSaveButtonElement,
-formAddElement, editFormTitle, editFormLink, popupOpenImgPlaceImage, popupOpenImgPlaceText, popupOpenImgCloseButton, user } from '../pages/utils/constants.js';
+import {
+  profilePopup, popupTypeAddCardElement, popupOpenImgPlace, buttonOpenPopupProfile, buttonClosePopupProfile,
+  formElement, inputElement, userProfile, userInfo, profile, profileName, profileJob, itemTemplateElement,
+  profileTitle, profilePlace, listElement, popupAddOpenButtonElement, popupAddCloseButtonElement, popupAddSaveButtonElement,
+  formAddElement, editFormTitle, editFormLink, popupOpenImgPlaceImage, popupOpenImgPlaceText, popupOpenImgCloseButton, user
+} from '../pages/utils/constants.js';
 //
 
-const popupOpenImage = new PopupWithImage(popupOpenImgPlace) 
+const popupOpenImage = new PopupWithImage(popupOpenImgPlace)
 
 function handleCardClick(link, name) {
-    popupOpenImage.open(link, name);
-    popupOpenImage.setEventListeners();
+  popupOpenImage.open(link, name);
 }
+popupOpenImage.setEventListeners();
+
 
 const cardList = new Section(
   {
@@ -36,19 +39,19 @@ function createCard(item) {
   cardList.addItem(cardElement);
 }
 
+
 const editProfileValidate = new FormValidator(validationConfig, formElement);
 editProfileValidate.enableValidation();
 const addNewCardValidate = new FormValidator(validationConfig, formAddElement);
 addNewCardValidate.enableValidation();
 
-const userProfileInfo = new UserInfo({nameSelector: user.userProfile, infoSelector: user.userInfo});
-const editProfile = new PopupWithForm(profilePopup, userSubmitForm);
-const addNewCard = new PopupWithForm(popupTypeAddCardElement, cardSubmitForm)
+const userProfileInfo = new UserInfo({ nameSelector: user.userProfile, infoSelector: user.userInfo });
+const popupEditProfile = new PopupWithForm(profilePopup, userSubmitForm);
+const popupAddCard = new PopupWithForm(popupTypeAddCardElement, cardSubmitForm)
 
 
-function userSubmitForm({name, info}) {
-  userProfileInfo.setUserInfo({name, info});
-  editProfile.close();
+function userSubmitForm({ name, info }) {
+  userProfileInfo.setUserInfo({ name, info });
 }
 
 function cardSubmitForm() {
@@ -59,23 +62,22 @@ function cardSubmitForm() {
   formAddElement.reset();
   addNewCardValidate.toggleButtonState();
   addNewCardValidate.deleteValidation();
-  addNewCard.close();
 }
 
-function editProfilePopup() {
-  editProfile.open();
+function openEditProfilePopup() {
+  popupEditProfile.open();
   userProfile.value = userProfileInfo.getUserInfo().name;
   userInfo.value = userProfileInfo.getUserInfo().info;
 }
 
-function editCardPopup() {
-  addNewCard.open()
+function openEditCardPopup() {
+  popupAddCard.open()
 }
 
-buttonOpenPopupProfile.addEventListener('click', editProfilePopup);
-popupAddOpenButtonElement.addEventListener('click', editCardPopup)
+buttonOpenPopupProfile.addEventListener('click', openEditProfilePopup);
+popupAddOpenButtonElement.addEventListener('click', openEditCardPopup)
 
 
-editProfile.setEventListeners();
-addNewCard.setEventListeners();
+popupEditProfile.setEventListeners();
+popupAddCard.setEventListeners();
 
