@@ -35,8 +35,7 @@ cardList.renderItems();
 
 function createCard(item) {
   const card = new Card(item, itemTemplateElement, handleCardClick);
-  const cardElement = card.generateCard();
-  cardList.addItem(cardElement);
+  cardList.addItem(card.generateCard());
 }
 
 
