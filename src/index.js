@@ -1,19 +1,19 @@
-import '../pages/index.css'
+import './pages/index.css'
 
-import { Card } from '../pages/components/Card.js'
-import { FormValidator } from '../pages/components/FormValidator.js';
-import { Section } from '../pages/components/Section.js';
-import { PopupWithImage } from '../pages/components/PopupWithImage.js';
-import { UserInfo } from '../pages/components/UserInfo.js'
-import { PopupWithForm } from '../pages/components/PopupWithForm.js'
-import { validationConfig } from '../pages/utils/config.js';
-import { initialCards } from '../pages/utils/initial-cards.js';
+import { Card } from './pages/components/Card.js'
+import { FormValidator } from './pages/components/FormValidator.js';
+import { Section } from './pages/components/Section.js';
+import { PopupWithImage } from './pages/components/PopupWithImage.js';
+import { UserInfo } from './pages/components/UserInfo.js'
+import { PopupWithForm } from './pages/components/PopupWithForm.js'
+import { validationConfig } from './pages/utils/config.js';
+import { initialCards } from './pages/utils/initial-cards.js';
 import {
   profilePopup, popupTypeAddCardElement, popupOpenImgPlace, buttonOpenPopupProfile, buttonClosePopupProfile,
   formElement, inputElement, userProfile, userInfo, profile, profileName, profileJob, itemTemplateElement,
   profileTitle, profilePlace, listElement, popupAddOpenButtonElement, popupAddCloseButtonElement, popupAddSaveButtonElement,
   formAddElement, editFormTitle, editFormLink, popupOpenImgPlaceImage, popupOpenImgPlaceText, popupOpenImgCloseButton, user
-} from '../pages/utils/constants.js';
+} from './pages/utils/constants.js';
 //
 
 const popupOpenImage = new PopupWithImage(popupOpenImgPlace)
