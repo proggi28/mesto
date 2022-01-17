@@ -15,7 +15,10 @@
         </header>
         <main class="content">
             <section class="profile">
-                <img src="<%=require('./images/avatar.jpg')%>" alt="Аватарка" class="profile__avatar">
+                <!--<button type="button" class="profile__edit-avatar"></button>-->
+                <div class="profile__image-button">
+                    <img src="<%=require('./images/avatar.jpg')%>" alt="Аватарка" class="profile__avatar">
+                </div>
                 <div class="profile__info">
                     <div class="profile__wrapper">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -89,6 +92,33 @@
             <h3 class="popup-image__text">Текст</h3>
         </div>
     </article>
+    <!--Попап подтверждения удаления карточки-->
+    <article class="popup popup-delete">
+        <div class="popup-delete__block">
+            <button type="button" class="popup__close-button popup__close-button_popup-delete"></button>
+            <div class="popup__content">
+                <h3 class="popup-delete__text">Вы уверены?</h3>
+                <button class="popup__save-button popup__save-button_button-delete">Да</button>
+            </div>
+        </div>
+    </article>
+    <!--Попап изменения аватара-->
+    <article class="popup popup-avatar">
+        <div class="popup-avatar__block">
+            <button type="button" class="popup__close-button popup__close-button_popup-avatar"></button>
+            <div class="popup__content">
+                <h3 class="popup-avatar__text">Обновить аватар</h3>
+                <form class="popup__form popup__form_add_avatar">
+                    <div class="popup__form-section">
+                        <input id="avatar" class="popup__input popup__input_avatar" type="url" name="avatar"
+                            placeholder="Обновить аватар" required>
+                        <span class="popup__input-error" id="url-error"></span>
+                    </div>
+                    <button class="popup__save-button popup__save-button_button-avatar">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </article>
     <!--Template-->
     <template class="item-template">
         <li class="card">
@@ -96,7 +126,10 @@
             <button type="button" class="card__button-delete"></button>
             <div class="description">
                 <h2 class="card__title"></h2>
-                <button type="button" class="card__heart"></button>
+                <div class="card__like-container">
+                    <button type="button" class="card__heart"></button>
+                    <p class="card__like-length"></p>
+                </div>
             </div>
         </li>
     </template>

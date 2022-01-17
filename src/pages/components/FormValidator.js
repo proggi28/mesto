@@ -14,22 +14,22 @@ export class FormValidator {
     
         errorElement.textContent = this._errorMessage;
         errorElement.classList.add(this._inputErrorClass);
+        inputElement.classList.add(this._inputInvalidClass)
     };
     _hideInputError(inputElement) {
         const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     
         errorElement.textContent = '';
         errorElement.classList.remove(this._inputErrorClass);
+        inputElement.classList.remove(this._inputInvalidClass)
     };
     
     _checkInputValidity = (inputElement) => {
         this._isInputNotValid = !inputElement.validity.valid;
             if (this._isInputNotValid) {
               this._errorMessage = inputElement.validationMessage;
-                inputElement.classList.add(this._inputInvalidClass)
                 this._showInputError(inputElement);
             } else {
-                inputElement.classList.remove(this._inputInvalidClass)
                 this._hideInputError(inputElement);
             }
     }

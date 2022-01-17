@@ -2,6 +2,9 @@
 const profilePopup = document.querySelector('.popup_type_profile');
 const popupTypeAddCardElement = document.querySelector('.popup_type_add-card');
 const popupOpenImgPlace = document.querySelector('.popup-image');
+const popupCardDelete = document.querySelector('.popup-delete');
+const popupAvatarChange = document.querySelector('.popup-avatar');
+
 
 //Кнопки попапа popupProfile
 const buttonOpenPopupProfile = document.querySelector('.profile__edit-button');
@@ -41,12 +44,24 @@ const popupOpenImgPlaceImage = popupOpenImgPlace.querySelector('.popup-image__im
 const popupOpenImgPlaceText = popupOpenImgPlace.querySelector('.popup-image__text');
 const popupOpenImgCloseButton = popupOpenImgPlace.querySelector('.popup__close-button_open_image');
 
-const user = {
-    userProfile: '.profile__title',
-    userInfo: '.profile__text'
-  }
+//Попап редактирования аватара
+const buttonEditAvatar = document.querySelector('.profile__image-button');
+const popupAvatarSaveButton = document.querySelector('.popup__save-button_button-avatar');
 
-export { profilePopup, popupTypeAddCardElement, popupOpenImgPlace, buttonOpenPopupProfile, buttonClosePopupProfile,
-    formElement, inputElement, userProfile, userInfo, profile, profileName, profileJob,itemTemplateElement,
-    profileTitle, profilePlace, listElement, popupAddOpenButtonElement, popupAddCloseButtonElement, popupAddSaveButtonElement,
-    formAddElement, editFormTitle, editFormLink, popupOpenImgPlaceImage, popupOpenImgPlaceText, popupOpenImgCloseButton, user }
+//Форма попапа редактирования профиля
+const formEditAvatar = document.querySelector('.popup__form_add_avatar');
+
+const popupEditSaveButton = document.querySelector('.popup__save-button');
+
+const user = {
+  userProfile: '.profile__title',
+  userInfo: '.profile__text',
+  avatar: '.profile__avatar'
+}
+
+export {
+  profilePopup, popupTypeAddCardElement, popupOpenImgPlace, popupCardDelete, buttonOpenPopupProfile, buttonClosePopupProfile,
+  formElement, inputElement, userProfile, userInfo, profile, profileName, profileJob, itemTemplateElement,
+  profileTitle, profilePlace, listElement, popupAddOpenButtonElement, popupAddCloseButtonElement, popupAddSaveButtonElement,
+  formAddElement, editFormTitle, editFormLink, popupOpenImgPlaceImage, popupOpenImgPlaceText, popupOpenImgCloseButton, user, popupAvatarChange, buttonEditAvatar, formEditAvatar, popupAvatarSaveButton, popupEditSaveButton
+}
