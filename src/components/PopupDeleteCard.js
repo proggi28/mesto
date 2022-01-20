@@ -3,6 +3,7 @@ import { Popup } from "./Popup";
 export class PopupDeleteCard extends Popup {
     constructor(popupElement, handleCardDelete) {
         super(popupElement);
+        this._popupForm = this._popupElement.querySelector('.popup__form');
         this._handleCardDelete = handleCardDelete;
     }
 
@@ -13,11 +14,16 @@ export class PopupDeleteCard extends Popup {
         this.deleteCard = deleteCard;
     }
 
+    cardId() {
+        return this._cardId;
+      }
+
     setEventListeners() {
+        
         super.setEventListeners();
-        this._popupElement.addEventListener('submit', (evt) => {
+        this._popupForm.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._handleCardDelete(this._card, this._cardId, this.deleteCard)
+            this._handleCardDelete(this._card, this._cardId, this.deleteCard);
         })
     }    
 }

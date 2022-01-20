@@ -8,3 +8,9 @@
     border-radius: 10px;
     color: #000;
 }
+
+@media screen and (max-width: 767px) {
+    .popup-delete__block {
+        max-width: 282px;
+    }
+}

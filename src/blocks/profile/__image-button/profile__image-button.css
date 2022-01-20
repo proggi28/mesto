@@ -22,3 +22,13 @@
     background-repeat: no-repeat;
     cursor: pointer;
   }
+
+  @media screen and (max-width: 767px) {
+    .profile__image-button {
+        margin: 0 auto;
+    }
+
+    .profile__image-button::after {
+      z-index: 0;
+    }
+}

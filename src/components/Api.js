@@ -26,11 +26,11 @@ export class Api {
         }).then(this._errorHandler)
     }
 
-    addCard(data) {
+    addCard(item) {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: this._headers,
-            body: JSON.stringify(data) 
+            body: JSON.stringify(item) 
         }).then(this._errorHandler)
     }
     

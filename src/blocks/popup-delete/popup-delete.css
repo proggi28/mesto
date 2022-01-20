@@ -12,3 +12,9 @@
     opacity: 0;
     transition: visibility .5s, opacity .5s linear;
 }
+
+@media screen and (max-width: 767px) {
+    .popup-delete__text {
+        text-align: center;
+    }
+}

@@ -9,3 +9,9 @@
     margin-top: 34px;
     margin-bottom: 36px;
 }
+
+@media screen and (max-width: 767px) {
+    .popup-avatar__text {
+        text-align: center;
+    }
+}
